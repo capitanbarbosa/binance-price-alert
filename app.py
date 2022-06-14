@@ -18,10 +18,25 @@ fiatCurrency = 'USDT'
 client = Client()
 
 ##
+
 def bruhCommand(update, context):
     context.bot.send_message(
         chat_id=update.effective_chat.id, text='bruh')
 
+    if len(context.args) > 2:
+        crypto = context.args[0].upper()
+        sign = context.args[1]
+        price = context.args[2]
+        result = client.get_ticker(symbol=crypto+fiatCurrency)
+        d = dict()
+        spotPrice = truncate(result['lastPrice'])
+
+        context.job_queue.run_repeating(priceAlertCallback, interval=15, first=15, context=[
+                                        crypto, sign, price, update.message.chat_id])
+        
+        response += f"the current price of {crypto} is {spotPrice} {fiatCurrency}"
+
+    context.bot.send_message(chat_id=update.effective_chat.id, text=response)
 
 def helpCommand(update, context):
     return
