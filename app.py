@@ -6,8 +6,8 @@ import re
 from binance import Client
 from telegram import ParseMode
 from telegram.ext import CommandHandler, Defaults, Updater
-# 5502330273:AAF43xM3FcSFwNDNwWbxgqsnagTNMw8rjAA - wiztelebot
-token = "5375922509:AAHmc8_XfpBRzQXOlZUlvMEGhglTHUsyPpA"  # Telegram bot token
+
+token = "5502330273:AAF43xM3FcSFwNDNwWbxgqsnagTNMw8rjAA"  # Telegram bot token
 chat_id = "1554810140"  # Your telegram userid for bot update
 
 # -100xxxxxxx add bot to your channel as admin to update on channel
